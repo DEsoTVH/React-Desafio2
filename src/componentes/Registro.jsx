@@ -1,8 +1,8 @@
-import React from "react";
-import SocialButton from "./SocialButton";
-import Formulario from "./Formulario";
+import React from 'react';
+import SocialButton from './SocialButton';
+import Formulario from './Formulario';
 
-export default function Registro() {
+export default function Registro({ setAlertMessage }) {
   return (
     <div className="container">
       <div className="redes">
@@ -10,7 +10,10 @@ export default function Registro() {
         <SocialButton icon={<i className="fa-brands fa-github"></i>} />
         <SocialButton icon={<i className="fa-brands fa-linkedin"></i>} />
       </div>
-      <Formulario/>
+      <Formulario setAlertMessage={setAlertMessage} />
     </div>
   );
 }
+
+
+

@@ -1,30 +1,22 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from 'react';
 
-export default function Formulario() {
+export default function Formulario({ setAlertMessage }) {
+  const [nombre, setNombre] = useState('');
+  const [correo, setCorreo] = useState('');
+  const [contraseña, setContraseña] = useState('');
+  const [contraseñaDos, setContraseñaDos] = useState('');
 
-    const [nombre, setNombre] = useState('');
-    const [correo, setCorreo] = useState('');
-    const [contraseña, setContraseña] = useState('');
-    const [contraseñaDos, setContraseñaDos] = useState('');
-    const [error, setError] = useState(false);
+  function validarDatos(e) {
+    e.preventDefault();
 
-    function validarDatos(e) {
-        e.preventDefault();
-
-        if(nombre === '' || correo === '' || contraseña === '' || contraseñaDos === ''){
-            alert("Debe llenar todos los campos")
-        }
-        else if(contraseña !== contraseñaDos){
-            alert("Las contraseñas deben ser iguales")
-        }
-        else{
-            alert("Los datos fueron enviados correctamente!")
-        }
-
-
+    if (nombre === '' || correo === '' || contraseña === '' || contraseñaDos === '') {
+      setAlertMessage('Debe llenar todos los campos');
+    } else if (contraseña !== contraseñaDos) {
+      setAlertMessage('Las contraseñas deben ser iguales');
+    } else {
+      setAlertMessage('Los datos fueron enviados correctamente!');
     }
-
+  }
 
   return (
     <form onSubmit={validarDatos}>
@@ -37,8 +29,6 @@ export default function Formulario() {
       <label>Confirma tu contraseña</label>
       <input type="password" className="form-control" onChange={(e) => setContraseñaDos(e.target.value)} value={contraseñaDos} />
       <button type="submit" className="btn btn-primary mt-3">Enviar</button>
-      
     </form>
-    
   );
 }
