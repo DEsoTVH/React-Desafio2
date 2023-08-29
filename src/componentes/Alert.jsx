@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Alert(props) {
+export default function Alert({ message }) {
   return (
-    <>
-       <div>Realizando cambios</div> 
-    </>
+    <div className={`alert ${message ? 'alert-danger' : 'alert-success'}`}>
+      {message || 'Mensaje de éxito por defecto'}
+    </div>
   );
 }
